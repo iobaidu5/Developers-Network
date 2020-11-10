@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
+const passport = require('passport');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -19,7 +20,11 @@ mongoose.connect(db)
         .catch(err => console.log("Databse connection Error"));
 
         
-app.get('/', (req ,res) => res.send("Hello World"));
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport config
+require('./config/passport')(passport);
 
 //mongoose.connect(db, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
