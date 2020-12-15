@@ -20,7 +20,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Profile Works' }));
 
 // @route   GET api/profile
 // @desc    Get current users profile
-// @access  Private
+// @access  Private 
 router.get(
   '/',
   passport.authenticate('jwt', { session: false }),
